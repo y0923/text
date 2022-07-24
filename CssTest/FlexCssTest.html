@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flex</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1.0.maximum-scale=1.0,user-scalable=no,minimal-ui">
+  <!-- 该meta描述移动端 作用:在移动浏览器中，当页面宽度超出设备，浏览器内部虚拟的一个页面容器，将页面容器缩放到设备那么大展示-->
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    ul {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /**
+      当前给ul设置 flex弹性盒子  主轴为竖向并且 对齐
+      flex-direction 决定主轴方向
+      flex-wrap 给盒子换行 设置大小的盒子 一排太多会减少自己px并不会换行  
+      flex-flow  flow 就是可以决定主轴方向 并且可以换行  默认值  横向并且不换行    
+      justifly-content 子元素水平排列
+      align-items 子元素垂直排列
+      flex-grow 定义项目的放大比例，默认为0，如果存在剩余空间，也不放大
+      flex-shrink 定义项目缩小比例 默认为1，如果空间不足，项目缩小
+      flex-basis
+      flex ： flex-grow ，flex-shrink 和flex-basis的简写，默认为0 1 auto。后两个属性可写可不写
+      布局单位 vw，vh  是针对于视口的的百分之多少  不是针对父元素
+      **/
+
+    }
+  </style>
+
+</head>
+
+<body>
+  <ul>
+    <li>首页</li>
+    <li>订单</li>
+    <li>收藏</li>
+    <li>我的</li>
+  </ul>
+</body>
+
+</html>

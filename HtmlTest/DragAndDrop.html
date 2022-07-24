@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>拖放</title>
+  <style>
+    .div1,
+    .div2 {
+      width: 400px;
+      height: 200px;
+      border: 1px solid #FF0000;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!--拖放（Drag 和 drop）是 HTML5 标准的组成部分-->
+    <p>拖动图片到矩形栏</p>
+    <div class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <img id="drag1" src="/img/shouye.svg" draggable="true" ondragstart="drag(event)">
+    <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </div>
+  <script>
+    //draggable="true" 使元素可拖动， div1中事件>放到何处 - ondragover事件规定在何处放置被拖动的数据。
+
+    //ondragstart 属性调用了一个函数，drag(event)，它规定了被拖动的数据。 dataTransfer.setData() 方法设置被拖数据的数据类型和值
+    //Text 是一个 DOMString 表示要添加到 drag object 的拖动数据的类型。值是可拖动元素的 id ("drag1")。
+    const drag = ev => {
+      ev.dataTransfer.setData("Text", ev.target.id)
+    }
+    //ondragover事件规定在何处放置被拖动的数据。 调用 ondragover 事件的 event.preventDefault() 方法
+    const allowDrop = event => {
+      event.preventDefault();
+    }
+    //当放置被拖数据时，会发生 drop 事件。调用 preventDefault() 来避免浏览器对数据的默认处理
+    const drop = ev => {
+      ev.preventDefault();
+      let data = ev.dataTransfer.getData("Text");
+      ev.target.appendChild(document.getElementById(data))
+    }
+  </script>
+
+</body>
+
+</html>

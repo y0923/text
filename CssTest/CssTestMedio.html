@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体查询</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      width: 100%;
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    ul li {
+      width: 97.75px;
+      height: 30px;
+      /* background-color: aqua; */
+      margin: 1px;
+      /* flex: 1; */
+    }
+
+    /** 当小于768px时 背景颜色换成pink 对齐方式为start */
+    @media screen and(min-width: 767px) {
+      ul li {
+        background-color: pink;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <ul>
+      <li>导航栏</li>
+      <li>导航栏</li>
+      <li>导航栏</li>
+      <li>导航栏</li>
+      <li>导航栏</li>
+      <li>导航栏</li>
+      <li>导航栏</li>
+      <li>导航栏</li>
+    </ul>
+  </ul>
+
+</body>
+
+</html>

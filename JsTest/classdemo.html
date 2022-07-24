@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .table {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <div>
+    <span>根据价格搜索:</span>
+    <input class="start">
+    <span>-</span>
+    <input class="end">
+    <button onclick="submit()" class="but">点击</button>
+  </div>
+  <div style="width: 600px;height: 700px;">
+    <table>
+      <tr>
+        <thead>
+          <th>编号</th>
+          <th>价格</th>
+          <th>品牌</th>
+        </thead>
+      </tr>
+      <tbody>
+
+      </tbody>
+    </table>
+    <ul class="lis">
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+      <li>小六</li>
+    </ul>
+  </div>
+  <script>
+    let brr = [{
+      id: 1,
+      pname: '小米',
+      price: 1999
+    }, {
+      id: 2,
+      pname: '华为',
+      price: 2999
+    }, {
+      id: 3,
+      pname: '三星',
+      price: 999
+    }, {
+      id: 4,
+      pname: 'oppo',
+      price: 999
+    }]
+    let tbody = document.querySelector('tbody')
+    brr.forEach(i => {
+      let tr = document.createElement('tr')
+      for (let x in i) {
+        let td = document.createElement('td')
+        td.innerHTML = i[x]
+        tr.append(td)
+      }
+      tbody.appendChild(tr)
+    })
+    let start = document.querySelector('.start')
+    const submit = () => {
+      let str = start.value.trim()
+      console.log('>', str)
+    }
+    //闭包
+    function fun() {
+      let num = 10
+      return function () {
+        console.log(num)
+      }
+    }
+
+
+
+
+    //获取每一个li元素    下面两种方法在li元素上点击事件两种实现 
+    let lis = document.querySelector('.lis').querySelectorAll('li')
+    //循环li元素 并且每一个li增加按钮事件  打印出来
+    for (let i = 0; i < lis.length; i++) {
+      // lis[i] = lis.index
+      lis[i].index = i
+      lis[i].onclick = function () {
+        // console.log(i)
+      }
+    }
+    //闭包写法
+    for (let i = 0; i < lis.length; i++) {
+      //立即执行函数    for循环 创建了几次立即执行函数
+      (function (i) {
+        //闭包写法  两个函数  onclik事件函数中的值是外面函数传进来的  
+        lis[i].onclick = () => {
+          console.log(i)
+        }
+      })(i) //i是上面for循环传递来的  然后给立即执行函数接收     
+    }
+  </script>
+
+</body>
+
+</html>

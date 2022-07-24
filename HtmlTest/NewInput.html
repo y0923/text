@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>html中input几种类型</title>
+  <script>
+    const print = () => {
+      let v = document.querySelector("div")
+      let a = myform.likecolor.value;
+      v.append(a)
+      alert(a)
+    }
+  </script>
+
+  <style>
+    .div1 {
+      width: 180px;
+      height: 30px;
+      border: 1px solid #2b2525;
+    }
+  </style>
+</head>
+
+<body>
+  <!--html5 input框新的类型  -->
+  <form name="myform">
+    <input type="color" name="likecolor">
+    <input type="date" name="likedate">
+    <input type="datetime" name="likedatetime">
+    <input type="button" name="button" value="获取" onclick="print()">
+  </form>
+  <div class="div1">
+
+  </div>
+
+
+</body>
+
+</html>

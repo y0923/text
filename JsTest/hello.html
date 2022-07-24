@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello</title>
+</head>
+
+<body>
+  <a>Hello html!!</a>
+  <div class="index">
+    <div class="index-child">
+
+    </div>
+  </div>
+  <script>
+    var Person = new Object();
+
+
+    function Star(name, age, sex, birthd) {
+      this.name = name
+      this.age = age
+      this.sex = sex
+      this.birthd = birthd
+      this.sing = function () {
+        console.log("唱歌")
+      }
+    }
+    //构造函数的原型对象追加方法 实现方法共享
+    Star.prototype.dance = function () {
+      console.log("我会跳舞")
+    }
+    // sing(() => {
+    //   console.log("唱歌")
+    // })
+    // console.log(this)
+    var ldh = new Star();
+    var zxc = new Star();
+    ldh.sex = '男'
+    Star.sex = '女'
+    console.log(zxc.dance === ldh.dance)
+    console.log(zxc.sing === ldh.sing)
+    console.log('ldh>>>>>>>>>', ldh)
+    console.log('object>>>>>>', Object.prototype)
+    console.log('Star>>>>>>>>', Star.prototype)
+    console.log('Array>>>>>>>>', Array.prototype)
+    //Array.prototy数组原型对象 中有很多方法 在数组原型对象中新增一个新的方法  方法sum  求和的方法
+    Array.prototype.sum = function () {
+      var sum = 0;
+      //循环获取实例对象的数组的值 this指向实例对象  实例对象就是谁调用才会指向谁
+      for (i = 0; i < this.length; i++) {
+        sum += this[i]
+      }
+      //循环后获取的值  return出来
+      return sum
+
+
+    }
+    //创建实例对象  里面赋值  
+    let arr = [1, 2, 3]
+    //调用数据原型对象新增的方法  sum
+    arr.sum();
+    //打印这个数组方法看值是否相加
+    console.log(arr.sum())
+
+
+    // Array.prototype = {
+    //   su: function () {
+    //     var su = 0
+    //     for (i = 0; i < that.length; i++) {
+    //       su += that[i]
+    //     }
+    //     return su
+    //   }
+    // }
+    // var baa = [2, 3, 4, ]
+    // console.log("su====", baa.su())
+  </script>
+  <style>
+
+  </style>
+
+</body>
+
+</html>

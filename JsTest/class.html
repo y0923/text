@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div>
+    <span>根据价格搜索:</span>
+    <input class="start">
+    <span>-</span>
+    <input class="end">
+    <button class="but">点击</button>
+  </div>
+  <table>
+    <tbody>
+      <thead>
+        <th>编号</th>
+        <th>价格</th>
+        <th>品牌</th>
+      </thead>
+    </tbody>
+  </table>
+  <script>
+    //创建数组渲染到table表格中
+    let brr = [{
+      id: 1,
+      pname: '小米',
+      price: 1999
+    }, {
+      id: 2,
+      pname: '华为',
+      price: 2999
+    }, {
+      id: 3,
+      pname: '三星',
+      price: 999
+    }, {
+      id: 4,
+      pname: 'oppo',
+      price: 999
+    }]
+    //获取对应元素 tbody
+    var tbody = document.querySelector('tbody')
+    brr.forEach((i) => {
+      //循环遍历数组 生成元素然后放进去
+      var tr = document.createElement('tr')
+      // tr.innerHTML = '<td>' + i.id + '</td><td>' + i.pname + '</td><td>' + i.price + '</td>' 这是ES5写法 下面是ES6模板字符串
+      tr.innerHTML =
+        `<td>${i.id}</td>
+      <td>${i.pname}</td>
+      <td>${i.price}</td>`
+      //在获取的tbody元素中加入这个创建的tr
+      tbody.append(tr)
+    })
+
+    //第一种获取点击
+    // const btn = () => {
+    //   alert("你好啊")
+    // }
+    //第二种获取元素节点  给它赋予点击事件   搜索价格先获取input框元素
+    var start = document.querySelector('.start')
+    var end = document.querySelector('.end')
+    let but = document.querySelector('button')
+
+
+    //点击后用filter过滤方法 返回出新数组用crr接收  返回条件是传进去的v.price  数组中价格  大于input框的value等等的值
+    but.addEventListener('click', () => {
+      var crr = brr.filter(v => {
+        // return v.price >= start.value && v.price <= end.value
+        return v.price >= start.value && v.price <= end.value
+      })
+      //获取的新数组重新渲染到界面  首先获取tbody标签清空  在新数组crr中循环渲染
+      tbody.innerHTML = ''
+      crr.forEach(i => {
+        var tr = document.createElement('tr')
+        var tbody = document.querySelector('tbody')
+        tr.innerHTML = `<td>${i.id}</td>
+        <td>${i.pname}</td>
+        <td>${i.price}</td>`
+        tbody.append(tr)
+      })
+    });
+  </script>
+
+
+</body>
+
+</html>

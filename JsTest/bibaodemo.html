@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * 需求
+     * 闭包应用-计算打车价格
+     * 打车起步价格13(3公里内)，之后没多一公里增加五块钱，用户输入公里数就可以
+     * 计算打车价格，如果又拥堵情况，总价格多收10块钱拥堵费     
+     **/
+    let car = (function () {
+      let start = 13 //起步价
+      let total = 0 //总价
+      return {
+        //正常情况
+        price: function (gongli) {
+          if (gongli >= 3) {
+            total = start + (gongli - 3) * 5
+          } else {
+            total = start
+          }
+          return total
+        },
+        //拥堵之后的费用
+        yd: function (flag) {
+          return flag ? total + 10 : total
+        }
+      }
+    })()
+    //调用
+    console.log(car.price(5))
+    console.log(car.yd(true))
+
+
+    //判断是否是闭包函数
+    var name = "my name is window";
+    // var obj = {
+    //   name: "myname is Object",
+    //   getname: function () {
+    //     return function () {
+    //       return that.name
+    //     }
+    //   }
+    // }
+    var obj = {
+      name: "myname is Object",
+      getname: function () {
+        var that = this
+        return function () {
+          return that.name
+        }
+      }
+    }
+    console.log("obj>", obj.getname()())
+    class Test {
+      getname() {
+        console.log('getname')
+      }
+    }
+    let p = new Test()
+    p.getname();
+
+    //利用递归函数求1~n的阶乘1*2*3*4*n
+    function fn(n) {
+      if (n === 1) {
+        return 1
+      }
+      return n * fn(n - 1)
+    }
+    console.log(fn(5));
+  </script>
+</body>
+
+</html>
